@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<style>
+.error { color:red; font-size:12px; }
+</style>
+
+</head>
+<body>
+
+Imię:<br>
+<input id="imie"><br>
+<div class="error" id="e1"></div>
+
+Email:<br>
+<input id="email"><br>
+<div class="error" id="e2"></div>
+
+Hasło:<br>
+<input type="password" id="haslo"><br>
+<div class="error" id="e3"></div>
+
+Powtórz hasło:<br>
+<input type="password" id="haslo2"><br>
+<div class="error" id="e4"></div>
+
+<br>
+<button id="btn" disabled>Zarejestruj</button>
+
+<script>
+
+$("input").keyup(function(){
+
+let ok = true;
+
+
+if($("#imie").val()==""){
+$("#e1").text("wpisz imie");
+ok=false;
+}else $("#e1").text("");
+
+
+if($("#email").val()=="" || !$("#email").val().includes("@")){
+$("#e2").text("zly email");
+ok=false;
+}else $("#e2").text("");
+
+
+if($("#haslo").val().length<6){
+$("#e3").text("min 6 znakow");
+ok=false;
+}else $("#e3").text("");
+
+
+if($("#haslo2").val()!=$("#haslo").val()){
+$("#e4").text("hasla nie pasuja");
+ok=false;
+}else $("#e4").text("");
+
+
+if(ok) $("#btn").prop("disabled", false);
+else $("#btn").prop("disabled", true);
+
+});
+
+</script>
+
+</body>
+</html>
